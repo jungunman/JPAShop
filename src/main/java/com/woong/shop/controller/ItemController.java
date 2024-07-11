@@ -1,6 +1,8 @@
-package com.woong.shop;
+package com.woong.shop.controller;
 
-import com.woong.shop.dtos.requests.ItemRequestDto;
+import com.woong.shop.entity.Item;
+import com.woong.shop.repository.ItemRepository;
+import com.woong.shop.dtos.request.ItemRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +30,10 @@ public class ItemController{
     }
 
     @PostMapping("/item")
-    public String addItem(ItemRequestDto item){
-        itemRepository.save(item.toItem());
-        System.out.println("상품 등록 완료");
+    public String addItem(Item item){
 
+        itemRepository.save(item);
+        System.out.println("상품 등록 완료");
         return "redirect:/list";
     }
 

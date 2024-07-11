@@ -1,6 +1,6 @@
-package com.woong.shop.dtos.requests;
+package com.woong.shop.dtos.request;
 
-import com.woong.shop.Item;
+import com.woong.shop.entity.Item;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -33,7 +33,4 @@ public class ItemRequestDto {
         }
     }
 
-    public Item toItem(){
-        return new Item(this.id,this.title,this.price);
-    }
 }

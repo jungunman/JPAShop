@@ -1,4 +1,4 @@
-package com.woong.shop;
+package com.woong.shop.entity;
 
 import jakarta.persistence.*;
 

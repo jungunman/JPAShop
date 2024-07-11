@@ -1,14 +1,14 @@
-package com.woong.shop;
+package com.woong.shop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Getter
-@ToString
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,5 +17,7 @@ public class Item {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String title;
     private Integer price;
+
+
 
 }

@@ -1,11 +1,10 @@
-package com.woong.shop;
+package com.woong.shop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 @Controller
 public class BasicController {
