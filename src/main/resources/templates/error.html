@@ -1,7 +1,4 @@
 <h1>잘못된 접근 방식입니다</h1>
 
-<p th:text="${status}"></p>
-<p th:text="${error}"></p>
-<p th:text="${path}"></p>
-<p th:text="${massage}"></p>
-<p th:text="${exception}"></p>
+<p th:text="${status}+' - '+${error}"></p>
+<p th:text="${message}"></p>

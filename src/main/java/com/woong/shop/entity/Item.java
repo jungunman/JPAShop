@@ -7,8 +7,6 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +15,5 @@ public class Item {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String title;
     private Integer price;
-
-
 
 }
