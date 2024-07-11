@@ -1,10 +1,14 @@
 package com.woong.shop;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@ToString
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
