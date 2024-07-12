@@ -13,6 +13,6 @@ public interface ItemService {
     public List<ItemResponse> showItemList();
     public ItemResponse showDetail(Long id) throws BadRequestException;
     public void addItem(ItemRequest itemRequest);
-    public void deleteItem(ItemRequest itemRequest);
-    public ItemResponse updateItem(ItemRequest itemRequest);
+    public void deleteItem(Long id);
+    public ItemResponse updateItem(ItemRequest itemRequest) throws BadRequestException;
 }

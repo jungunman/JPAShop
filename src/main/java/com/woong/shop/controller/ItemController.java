@@ -7,6 +7,7 @@ import com.woong.shop.repository.ItemRepository;
 import com.woong.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,7 @@ public class ItemController{
     @PostMapping("/item")
     public String addItem(ItemRequest itemRequest){
         itemService.addItem(itemRequest);
-        return "redirect:/list";
+        return "redirect:/items";
     }
 
     /* Item의 상세 정보 출력 */
@@ -59,10 +60,18 @@ public class ItemController{
 
     /* Item의 상세 정보 수정*/
     @PostMapping("/item/{id}")
-    public String updateItem(Model model, ItemRequest itemRequest){
+    public String updateItem(Model model, ItemRequest itemRequest) throws BadRequestException {
         model.addAttribute("item",itemService.updateItem(itemRequest));
         return "detail.html";
     }
 
+    /* Item 삭제 Ajax*/
+    @DeleteMapping("/item/{id}")
+    public ResponseEntity<String> deleteItem(@RequestBody Long id){
+        System.out.println("id : " + id);
+        itemService.deleteItem(id);
+
+        return ResponseEntity.ok("삭제 완료");
+    }
 
 }

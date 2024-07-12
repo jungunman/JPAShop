@@ -11,7 +11,7 @@
 <body>
     <div th:replace="~{./nav.html :: navbar}"></div>
 
-    <div class="card" th:each="dto : ${items}">
+    <div class="card" th:each="dto : ${items}" th:attr="card-item=${dto.id}">
         <img src="https://placehold.co/300">
         <div>
             <a th:href="@{/items/{id}(id=${dto.id})}">
@@ -19,7 +19,38 @@
             </a>
             <p th:text="${dto.price}"></p>
         </div>
-
+        <button th:onclick="'deleteItem('+ ${dto.id} +')'"> 삭제하기</button>
     </div>
+
+    <script>
+        function deleteItem(target){
+            if(confirm("해당 아이템을 삭제하겠습니까?")){
+                 fetch("/item/"+target,{
+
+                    method: "DELETE",
+                    headers : {
+                        "Content-Type" : "application/json",
+                    },
+                    body : target
+                }).then((response)=>{
+                    if(response.ok){
+
+                        alert("아이템 삭제 성공");
+                        let card = document.querySelector('[card-item="' + target + '"]');
+
+                        //카드 삭제
+                        if(card){
+                            card.remove();
+                        }
+                    }else{
+                        alert("삭제 실패")
+                    }
+                }).catch(error => {
+                    console.error("에러 발생 "+ error);
+                    alert("삭제중 오류 발생");
+                })
+            }
+        }
+    </script>
 </body>
 </html>

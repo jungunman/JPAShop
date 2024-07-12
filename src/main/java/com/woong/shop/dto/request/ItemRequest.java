@@ -16,7 +16,7 @@ public class ItemRequest {
     }
 
     public void setTitle(String title) throws Exception {
-        if(title.length() > 3 && title.length() < 1000){
+        if(title.length() > 1 && title.length() < 1000){
             this.title = title;
         }else if(title.isEmpty()){
             throw new BadRequestException("공백은 입력할 수 없습니다");

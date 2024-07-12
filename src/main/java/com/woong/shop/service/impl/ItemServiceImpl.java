@@ -54,12 +54,12 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public void deleteItem(ItemRequest itemRequest) {
-        //미구현
+    public void deleteItem(Long id) {
+        itemRepository.deleteById(id);
     }
 
     @Override
-    public ItemResponse updateItem(ItemRequest itemRequest) {
+    public ItemResponse updateItem(ItemRequest itemRequest) throws BadRequestException {
        Optional<Item> item = itemRepository.findById(itemRequest.getId());
 
        if(item.isPresent()){
@@ -70,7 +70,7 @@ public class ItemServiceImpl implements ItemService {
            //ItemResponse로 변환하여 리턴
            return ItemMapper.toItemResponse(itemRepository.save(updateItem));
        }else{
-           throw new PropertyNotFoundException("해당 게시글은 존재하지 않아 수정할 수 없는 게시글입니다.");
+           throw new BadRequestException("해당 게시글은 존재하지 않아 수정할 수 없는 게시글입니다.");
        }
     }
 }
