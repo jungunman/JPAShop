@@ -18,8 +18,8 @@
                 <h4 th:text="${dto.title}"></h4>
             </a>
             <p th:text="${dto.price}"></p>
+            <span th:onclick="'deleteItem('+ ${dto.id} +')'">❌</span>
         </div>
-        <button th:onclick="'deleteItem('+ ${dto.id} +')'"> 삭제하기</button>
     </div>
 
     <script>
